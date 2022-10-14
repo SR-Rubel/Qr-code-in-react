@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import { QrReader } from "react-qr-reader";
+import AES from "crypto-js/aes";
 function QrCodeOutput() {
   const [data, setData] = useState("No result");
   return (
@@ -8,7 +9,9 @@ function QrCodeOutput() {
         <QrReader
           onResult={(result, error) => {
             if (!!result) {
-              setData(result?.text);
+              const text = result?.text?.split("\n")
+              const plaintext =AES.decrypt(text[1], 'secret key 123');
+              setData(text[0]+'\n'+plaintext);
             }
             if (!!error) {
               console.info(error);
