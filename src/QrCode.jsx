@@ -4,7 +4,7 @@ import AES from "crypto-js/aes";
 
 export default function QrCode() {
   let value = "Hey! this worked \n";
-  const ciphertext = AES.encrypt("this my id 123", "secret key 123").toString();
+  const ciphertext = AES.encrypt("this my id 123", "secret key 12356").toString();
   value = value+ciphertext;
   console.log(value + ciphertext);
   return (

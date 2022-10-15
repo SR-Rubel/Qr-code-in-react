@@ -11,7 +11,7 @@ function QrCodeOutput() {
           onResult={(result, error) => {
             if (!!result) {
               const text = result?.text?.split("\n")
-              const plaintext =AES.decrypt(text[1], 'secret key 123');
+              const plaintext =AES.decrypt(text[1], 'secret key 12356');
               setData(text[0]+'\n'+plaintext.toString(CryptoJS.enc.Utf8));
             }
             if (!!error) {
